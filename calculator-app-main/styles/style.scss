@@ -1,0 +1,434 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+    font-family: 'League Spartan', sans-serif;  
+}
+
+:root{
+    --primary-color1:  hsl(222, 26%, 31%);
+    --toggleKeyPad1: hsl(223, 31%, 20%);
+    --toggleColor1:  hsl(6, 63%, 50%);
+    --keyPad1:  hsl(30, 25%, 89%);
+    --keyPadShadow1:  hsl(28, 16%, 65%);
+    --keyBackground1:  hsl(225, 21%, 49%);
+    --keyshadow1: hsl(224, 28%, 35%);
+    --primary-color2:   hsl(0, 0%, 90%);
+    --toggleKeyPad2: hsl(0, 5%, 81%);
+    --screenBackground2: hsl(0, 0%, 93%);
+    --toggleColor2:   hsl(25, 98%, 40%);
+    --keyBackground2: hsl(45, 7%, 89%);
+    --keyshadow2:hsl(35, 11%, 61%);
+    --text2:  hsl(60, 10%, 19%);
+    --delResetBtn2:  hsl(185, 42%, 37%);
+    --delResetBtnShadow2:  hsl(185, 58%, 25%);
+    --equalBtn2: hsl(25, 98%, 40%);
+    --equalBtnShadow2:  hsl(25, 99%, 27%);
+    --primary-color3:   hsl(268, 75%, 9%);
+    --toggleKeyPad3: hsl(268, 71%, 12%);
+    --screenBackground3:hsl(268, 71%, 12%);
+    --toggleColor3:   hsl(176, 100%, 44%);
+    --keyBackground3: hsl(268, 47%, 21%)  ;
+    --keyshadow3: hsl(290, 70%, 36%);
+    --text3:   hsl(52, 100%, 62%);
+    --delResetBtn3: hsl(281, 89%, 26%);
+    --delResetBtnShadow3:  hsl(290, 70%, 36%);
+    --equalBtn3: hsl(176, 100%, 44%);
+    --equalBtnShadow3: hsl(177, 92%, 70%);
+}
+
+//first theme
+body{
+    background: var(--primary-color1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   
+    min-height: 100vh;
+}
+
+
+//the calculator body
+article{
+
+    width: 600px;
+    height: 730px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    .header{
+        padding: 1rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        h1{
+            font-weight: 700;
+            font-size: 2rem;
+        }
+        .theme{
+            display: flex;
+            align-items: flex-end;
+            column-gap: 30px;
+            text-transform: uppercase;
+            h2{
+                font-size: 1rem;
+            }
+            .choose-theme{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                row-gap: 5px;
+                justify-content: center;
+                text-transform: uppercase;
+                .preference{
+                    display: flex;
+                    gap: 15px;
+                    align-items: center;
+                }
+                .toggle{
+                    cursor: pointer;
+                    width: 70px;
+                    border-radius: 15px;
+                    height: 25px;
+                    background: var(--toggleKeyPad1);
+                    display: flex;
+                    align-items: center;
+                    div{
+                        margin-left: 3px;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        
+                    }
+                    .theme1{
+                        transition: all .4s ease-in-out;
+                        background: var(--toggleColor1)
+                    }
+                    .theme2{
+                        transition: all .4s ease-in-out;
+                        background: var(--toggleColor2)
+                    }
+                    .theme3{
+                        transition: all .4s ease-in-out;
+                        background: var(--toggleColor3)
+                    }
+                    .active{
+                        visibility: visible;
+                        transition: all .9s ease-in-out;
+                    }
+                    .transparent{
+                        background: transparent;
+                    }
+                    .ball{
+                        margin-left: 3px;
+                        width: 20px;
+                        height: 20px;
+                        border-radius: 50%;
+                        background: var(--toggleColor1);
+                    }
+                }
+            }
+        }
+    }
+
+    .display{
+            width: 100%;
+            height: 140px;
+            background: var(--toggleKeyPad1);
+            border-radius: 10px;
+            font-size: 3.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: right;
+            padding: 2.5rem 1.7rem;
+            .displayNumbers{
+                display: grid;
+                grid-template-rows: repeat(2,1fr);
+                place-items: center;
+                align-items: center; 
+                gap: 1rem;
+                overflow-x: scroll;
+               
+                #result{
+                     font-size: 2rem;
+                }
+                #number{
+                    font-size: 3rem;
+                }
+            
+            }
+            .displayNumbers::-webkit-scrollbar {
+                display: none; /* for Chrome, Safari, and Opera */
+              }
+        }
+    }
+
+    .buttons{
+        display: grid;
+        place-items: center;
+        grid-template-columns: repeat(4, 1fr);
+        width: 100%;
+        height: 100%;
+        background: var(--toggleKeyPad1);
+        border-radius: 15px;
+        padding: 1.7rem;
+        button{
+            cursor: pointer;
+            border: none;
+            font-weight: 700;
+            border-radius: 10px;
+            font-size: 2rem;
+            padding: 1rem;
+            color: var(--toggleKeyPad1);
+            background: var(--keyPad1);
+            width: 100px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 0.27rem solid var(--keyPadShadow1);
+            &:active{
+                transition: all 0s ease-in-out;
+                border: 1.5px solid var(--toggleColor1);
+            }
+        }
+
+        .activeBtn{
+            &:active{
+                transition: all 0s ease-in-out;
+                border: 1.5px solid var(--toggleColor1);
+            }
+        }
+        .delete{
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 900;
+            color: white;
+            background: var(--keyBackground1);
+            border-bottom: 0.27rem solid hsl(224, 28%, 35%) ;
+        }
+        .multiply{
+            display: flex;
+            align-items: baseline;
+            font-size: 1.7rem;
+        }
+        .reset{
+            font-size: 1.8rem;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            width: 90%;
+            color: white;
+            background: var(--keyBackground1);
+            border-bottom: 0.27rem solid hsl(224, 28%, 35%) ;
+        }
+        .equal{
+            background-color: var(--toggleColor1);
+            grid-column-start: 3;
+            grid-column-end: 5;
+            width: 90%;
+            color: white;
+            border-bottom: 0.27rem solid  hsl(6, 70%, 34%);
+        }
+    }
+
+ //The second theme   
+
+.secondTheme{
+    background: var(--primary-color2);
+    color: var(--text2);
+    article{
+        .header{
+            .theme{
+                .choose-theme{
+                    .toggle{
+                        background: var(--toggleKeyPad2);
+                    
+                        .ball{
+                            background: var(--toggleColor2);
+                        }
+                    }
+                }
+            }
+        }
+    
+        .display{
+            
+                background: var(--screenBackground2);
+                color: var(--text2);
+            }
+
+
+            .buttons{
+                background: var(--toggleKeyPad2);
+                button{
+                    color: var(--text2);
+                    background: var(--keyBackground2);
+                    border-bottom: 0.27rem solid var(--keyshadow2);
+                    &:active{
+                        border: 1.5px solid var(--equalBtn2);
+                    }
+                }
+                .delete{
+                    background: var(--delResetBtn2);
+                    border-bottom: 0.27rem solid var(--delResetBtnShadow2) ;
+                }
+                .reset{
+                    background: var(--delResetBtn2);
+                    border-bottom: 0.27rem solid var(--delResetBtnShadow2);
+                }
+                .equal{
+                    background-color: var(--equalBtn2);
+                    border-bottom: 0.27rem solid  var(--equalBtnShadow2);
+                }
+            }
+        }
+    
+        
+
+}
+
+
+
+//the third theme
+
+        .thirdTheme{
+            background: var(--primary-color3);
+            color: var(--text3);
+
+            article{
+                .header{
+                    .theme{
+                        .choose-theme{
+                            .toggle{
+                                background: var(--toggleKeyPad3);
+                            
+                                .ball{
+                                    background: var(--toggleColor3);
+                                }
+                            }
+                        }
+                    }
+                }
+            
+                .display{
+                    
+                        background: var(--screenBackground3);
+                        color: var(--text3);
+                    }
+
+
+                    .buttons{
+                        background: var(--toggleKeyPad3);
+                        button{
+                            color: var(--text3);
+                            background: var(--keyBackground3);
+                            border-bottom: 0.27rem solid var(--keyshadow3);
+                            &:active{
+                                border: none;
+                                background: hsl(268, 40%, 39%);
+                            }
+                        }
+                        .delete{
+                            background: var(--delResetBtn3);
+                            border-bottom: 0.27rem solid var(--delResetBtnShadow3) ;
+                            &:hover{
+                                background: hsl(285, 36%, 37%);
+                            }
+                        }
+                        .reset{
+                            background: var(--delResetBtn3);
+                            border-bottom: 0.27rem solid var(--delResetBtnShadow3);
+                             &:hover{
+                                background: hsl(285, 36%, 37%);
+                            }
+                        }
+                        .equal{
+                            color: black;
+                            background-color: var(--equalBtn3);
+                            border-bottom: 0.27rem solid  var(--equalBtnShadow3);
+                            &:hover{
+                                background-color: var(--equalBtnShadow3);
+                                border-bottom: 0.27rem solid  var(--equalBtn3);
+                            }
+                        }
+                    }
+                }
+            
+                
+        }
+        
+@media (max-width: 708px) {
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+       main{
+         display: flex;
+         align-items: center;
+         justify-content: center;
+       }
+        article{
+            margin: auto;
+            max-width: 90%;
+            .display{
+                max-width: 100%;
+            }
+        }
+}    
+
+@media (max-width: 592px) {
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    main{
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+    }
+     article{
+         max-width: 80%;
+         .display{
+             max-width: 100%;
+         }
+     }
+     .buttons{
+            .button{
+                width: 80%;
+            }
+     }
+}    
+
+@media(max-width: 503px){ 
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    } 
+    main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    article{
+        max-width: 85%;
+        .display{
+            max-width: 100%;
+        }
+    }
+    .buttons button {
+        width: 70px;
+        height: 60px;
+    }
+    
+
+}
